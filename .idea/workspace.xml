@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="970bc872-2d74-4c40-a71c-5b717524b65d" name="Changes" comment="" />
+    <list default="true" id="970bc872-2d74-4c40-a71c-5b717524b65d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOJ_18352_백용민.java" beforeDir="false" afterPath="$PROJECT_DIR$/BOJ_18352_백용민.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/BOJ" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -65,6 +68,8 @@
       <workItem from="1644323590324" duration="3130000" />
       <workItem from="1644326773368" duration="53000" />
       <workItem from="1644451953028" duration="109000" />
+      <workItem from="1645184964857" duration="17000" />
+      <workItem from="1645422596865" duration="131000" />
     </task>
     <servers />
   </component>

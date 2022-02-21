@@ -10,7 +10,7 @@ public class BOJ_18352_백용민 {
 
         public static int n; // 노드의 개수(N)
         public static int m; // 간선의 개수(M)
-        public static int di;
+        public static int di;// 거리(K)
         public static int start; // 시작 노드 번호(Start)
         static PriorityQueue<QueueNode> pq;
 
@@ -28,27 +28,19 @@ public class BOJ_18352_백용민 {
 
                 /* 다익스트라 알고리즘을 수행 */
                 dijkstra(start);
-//                System.out.println(Arrays.toString(d));
-                for (int y = 0; y < d.length; y++) {
-                        if (d[y] == INF) {
-                                d[y] = 0;
-                        }
-                }
+
 //                int[] result = Arrays.stream(d).filter(x -> x != INF).toArray();
-//                System.out.println(Arrays.toString(d));
                 int o = 0;
 
-//                System.out.println(Arrays.asList(result).indexOf(di));
-                if (IntStream.range(0, d.length).
-                        filter(i -> di == d[i]).
-                        findFirst().orElse(-1) != -1) {
+                //d[]에서 목표값과 같은 값을 갖는 노드가 있다면 그 노드의 번호를 출력한다.
+                if (IntStream.range(0, d.length).filter(i -> di == d[i]).findFirst().orElse(-1) != -1) {
                         for (int k : d) {
                                 if (k == di) {
                                         System.out.println(o);
                                 }
                                 o++;
                         }
-                } else {
+                } else {//목표값에 해당하는 노드가 없다면 -1을 출력한다.
                         System.out.print(-1);
 
                 }
@@ -60,9 +52,10 @@ public class BOJ_18352_백용민 {
 
                 /* 시작 노드로 가기 위한 최단 경로는 0으로 설정하여, 큐에 삽입 */
                 pq.offer(new QueueNode(start, 0));
+                // 자기 노드로의 거리는 당연히 0으로 설정
                 d[start] = 0;
 
-                /* 큐가 비어있지않을 때까지 반복 */
+                /* 큐가 비어있지 않을 때까지 반복 */
                 while(!pq.isEmpty()) {
                         /* 가장 최단 거리가 짧은 노드에 대한 정보 꺼내기 */
                         QueueNode node = pq.poll();
@@ -104,7 +97,6 @@ public class BOJ_18352_백용민 {
                 for (int i = 0; i <= n; i++) {
                         graph.add(new ArrayList<>());
                 }
-
 
                 for(int i = 0; i < m; i++) {
                         s = bf.readLine();
