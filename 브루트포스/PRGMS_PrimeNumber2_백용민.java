@@ -19,6 +19,7 @@ public class PRGMS_PrimeNumber2_백용민 {
                check[j] = true;
                rec(n, temp, len);
                check[j] = false;
+
                System.out.println("temp(before) = " + temp);
                temp = temp.substring(0, temp.length() - 1);
                System.out.println("temp(after) = " + temp);
