@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="970bc872-2d74-4c40-a71c-5b717524b65d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BOJ_18352_백용민.java" beforeDir="false" afterPath="$PROJECT_DIR$/BOJ_18352_백용민.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/브루트포스/BOJ_10819_백용민.java" beforeDir="false" afterPath="$PROJECT_DIR$/브루트포스/BOJ_10819_백용민.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +15,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,6 +78,7 @@
       <workItem from="1644451953028" duration="109000" />
       <workItem from="1645184964857" duration="17000" />
       <workItem from="1645422596865" duration="131000" />
+      <workItem from="1647427289956" duration="1125000" />
     </task>
     <servers />
   </component>

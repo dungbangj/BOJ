@@ -7,61 +7,54 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ_10819_백용민 {
+     static int n; //숫자 갯수
+     static int[] arr; //입력받은 숫자를 넣을 배열
+     static boolean[] visited; //방문한 숫자 체크
+     static int[] tempArr; //만들어진 순열을 임시적으로 담는 저장소
+     static int result; //결과값을 저장할 변수
+
      public static void main(String[] args) throws IOException {
           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-          int num = Integer.parseInt(br.readLine());
+          n = Integer.parseInt(br.readLine());
+          arr = new int[n];
 
           StringTokenizer stt = new StringTokenizer(br.readLine(), " ");
-          int[] numArr = new int[num];
 
-          int i = 0;
+          int k = 0;
           while (stt.hasMoreTokens()) {
-               numArr[i++] = Integer.parseInt(stt.nextToken());
+               arr[k++] = Integer.parseInt(stt.nextToken());
           }
-          Arrays.sort(numArr);
-//          System.out.println(Arrays.toString(numArr));
+          Arrays.sort(arr);
+          System.out.println(Arrays.toString(arr));
 
-          int left = 0;
-          int right = num - 1;
-          int[] newArr = new int[num];
+          visited = new boolean[n];
+          tempArr = new int[n];
 
-          if (num % 2 == 0) {
-               for (int j = 0; j < num; j++) {
-                    if (j % 2 == 0) {
-                         newArr[j] = numArr[left++];
-                    } else {
-                         newArr[j] = numArr[right--];
-                    }
-               }
-          } else {
-               for (int j = 0; j < num; j++) {
-                    if (j == num - 1) {
-                         newArr[j] = numArr[num / 2];
-                    } else if (j % 2 == 0) {
-                         newArr[j] = numArr[left++];
-                    } else {
-                         newArr[j] = numArr[right--];
-                    }
-               }
-          }
+          result = 0;
+          solve(0);
+          System.out.println(result);
 
-//          System.out.println(Arrays.toString(newArr));
-
-          formula(newArr);
      }
 
-     public static void formula(int[] arr) {
-          int[] absArr = new int[arr.length];
-          int sum = 0;
+     public static void solve(int count) {
 
-          for (int i = 0; i < arr.length - 1; i++) {
-               absArr[i] = Math.abs(arr[i] - arr[i + 1]);
+          if (count == n) {
+               int sum = 0;
+               for (int i = 0; i < n - 1; i++) {
+                    sum += Math.abs(tempArr[i] - tempArr[i + 1]);
+               }
+
+               result = Math.max(result, sum);
+               return;
           }
 
-          for (int i : absArr) {
-               sum += i;
-          }
+          for (int i = 0; i < n; i++) {
+               if(visited[i]) continue;
 
-          System.out.println(sum);
+               visited[i] = true;
+               tempArr[count] = arr[i];
+               solve(count+1);
+               visited[i] = false;
+          }
      }
 }
