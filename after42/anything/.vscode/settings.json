@@ -1,5 +1,10 @@
 {
 	"files.associations": {
-		"string.h": "c"
+		"string.h": "c",
+		"*.tcc": "c",
+		"deque": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"vector": "c"
 	}
 }
