@@ -12,19 +12,19 @@ public class BOJ11051 {
           int N = Integer.parseInt(st.nextToken());
           int K = Integer.parseInt(st.nextToken());
           dp = new int[N + 1][K + 1];
-          bw.write(dpFactorial(N, K) + "\n");
+          bw.write(BC(N, K) + "\n");
 
           br.close();
           bw.flush();
           bw.close();
      }
 
-     static int dpFactorial(int n, int k) {
+     static int BC(int n, int k) {
           if (dp[n][k] > 0)
                return dp[n][k];
           if (k == 0 || n == k)
                return dp[n][k] = 1;
-          return dp[n][k] = (dpFactorial(n - 1, k - 1) + dpFactorial(n - 1, k)) % div;
+          return dp[n][k] = (BC(n - 1, k - 1) + BC(n - 1, k)) % div;
      }
 
 

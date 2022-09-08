@@ -2,6 +2,9 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 public class BOJ1010 {
+
+     static int[][] dp = new int[30][30];
+
      public static void main(String[] args) throws IOException {
           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
           BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -10,20 +13,20 @@ public class BOJ1010 {
                StringTokenizer st = new StringTokenizer(br.readLine());
                int N = Integer.parseInt(st.nextToken());
                int M = Integer.parseInt(st.nextToken());
-               if (N == 1) bw.write(M + "\n");
-               else if (N == M) {
-                    bw.write(1 + "\n");
-               } else {
-                    bw.write(My_Factorial(M - (N - 1)) + "\n");
-               }
+               bw.write(BC(M, N) + "\n");
           }
           br.close();
           bw.flush();
           bw.close();
      }
 
-     static int My_Factorial(int a) {
-          if (a == 0) return 1;
-          return (a * My_Factorial(a - 1));
+     static int BC(int N, int M) {
+          if (dp[N][M] > 0) {
+               return dp[N][M];
+          }
+          if (N == M || M == 0) {
+               return dp[N][M] = 1;
+          }
+          return dp[N][M] = BC(N - 1, M - 1) + BC(N - 1, M);
      }
 }
