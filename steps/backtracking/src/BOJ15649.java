@@ -36,5 +36,6 @@ public class BOJ15649 {
                     visit[i] = false;
                }
           }
+
      }
 }
