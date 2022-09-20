@@ -5,8 +5,8 @@ import java.util.StringTokenizer;
 
 public class BOJ15650 {
 
-     static boolean visit[];
-     static int arr[];
+     static boolean[] visit;
+     static int[] arr;
      static StringBuilder sb = new StringBuilder();
 
      public static void main(String[] args) throws IOException {
