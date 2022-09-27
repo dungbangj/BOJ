@@ -4,26 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BOJ11726 {
+public class BOJ9095 {
      public static void main(String[] args) throws IOException {
           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
           int N = Integer.parseInt(br.readLine());
-          int[] dp = new int[N + 1];
-          for (int i = 0; i <= N; i++) {
+          int[] dp = new int[12];
+          for (int i = 0; i <= 11; i++) {
                if (i == 0) dp[0] = 0;
                else if (i == 1) dp[1] = 1;
                else if (i == 2) dp[2] = 2;
+               else if (i == 3) dp[3] = 4;
+               else if (i == 4) dp[4] = 7;
                else
-                    dp[i] = (dp[i - 1] + dp[i - 2]) % 10007;
+                    dp[i] = dp[i - 2] + dp[i - 1] + dp[i - 3];
+
           }
-          System.out.println(dp[N]);
+          for (int i = 0; i < N; i++) {
+               System.out.println(dp[Integer.parseInt(br.readLine())]);
+          }
      }
 }
-
-//0 0
-//1 1
-//2 2
-//3 3
-//4 5
-//5 8
-//6 13
