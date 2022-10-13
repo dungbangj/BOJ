@@ -3,7 +3,6 @@ package gold;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ11054 {
@@ -50,7 +49,5 @@ public class BOJ11054 {
                }
           }
           System.out.println(maxSum);
-//          System.out.println(Arrays.toString(dpUp));
-//          System.out.println(Arrays.toString(dpDown));
      }
 }
