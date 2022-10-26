@@ -3,7 +3,6 @@ package gold;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class BOJ2133 {
      public static void main(String[] args) throws IOException {
@@ -21,6 +20,5 @@ public class BOJ2133 {
                dp[i] = dp[i - 2] * 3 + 2 + (tmp += dp[i - 4] * 2);
           }
           System.out.println(dp[N]);
-//          System.out.println(Arrays.toString(dp));
      }
 }
