@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="970bc872-2d74-4c40-a71c-5b717524b65d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="970bc872-2d74-4c40-a71c-5b717524b65d" name="Changes" comment="feat: Add .gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/BOJ.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BOJ.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +37,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "//wsl$/Ubuntu-20.04/home/yoyob1223/bj/BOJ",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -72,8 +78,16 @@
       <workItem from="1645184964857" duration="17000" />
       <workItem from="1645422596865" duration="131000" />
       <workItem from="1647427289956" duration="1125000" />
-      <workItem from="1671340360482" duration="56000" />
+      <workItem from="1671340360482" duration="678000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: Add .gitignore">
+      <created>1671340487325</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671340487325</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,5 +103,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: Add .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add .gitignore" />
   </component>
 </project>
