@@ -15,3 +15,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/15723)
 - [15723.py](15723.py)
 - [코드 설명](https://yback.notion.site/BOJ-15723-n-1bfc79111d16499b9c53b08973a214e7)
+
+## BOJ 21738 <얼음깨기 펭귄>
+
+- [문제 원본](https://www.acmicpc.net/problem/21738)
+- [21738.py](21738.py)
+- [코드 설명](https://yback.notion.site/BOJ-21738-cb7abb182d9747b3a956f78ae0d9220f)
