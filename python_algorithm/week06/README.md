@@ -21,3 +21,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/21738)
 - [21738.py](21738.py)
 - [코드 설명](https://yback.notion.site/BOJ-21738-cb7abb182d9747b3a956f78ae0d9220f)
+
+## BOJ 13265 <색칠하기>
+
+- [문제 원본](https://www.acmicpc.net/problem/13265)
+- [13265.py](13265.py)
+- [코드 설명](https://yback.notion.site/BOJ-13265-d868fd3f12254ce99409917444bbc46f)
