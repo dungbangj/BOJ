@@ -27,3 +27,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/13265)
 - [13265.py](13265.py)
 - [코드 설명](https://yback.notion.site/BOJ-13265-d868fd3f12254ce99409917444bbc46f)
+
+## BOJ 19542 <전단지 돌리기>
+
+- [문제 원본](https://www.acmicpc.net/problem/19542)
+- [19542.py](19542.py)
+- [코드 설명](https://yback.notion.site/BOJ-19542-f9b96e98621d423198aaf5993b145978)
