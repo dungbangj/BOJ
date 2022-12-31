@@ -1,3 +1,5 @@
+# n단 논법
+
 import sys
 
 input = sys.stdin.readline

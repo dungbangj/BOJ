@@ -16,13 +16,15 @@ def dfs(cur, pre):
 
 
 N, S, D = map(int, input().split())
-graph = {i: [] for i in range(1,N+1)}
+graph = {i: [] for i in range(1, N+1)}
 ans = 0
+
 
 for _ in range(N-1):
     x, y = map(int, input().split())
     graph[x] += [y]
     graph[y] += [x]
+
 
 dfs(S, 0)
 if ans != 0:
