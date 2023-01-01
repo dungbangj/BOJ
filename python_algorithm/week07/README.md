@@ -15,3 +15,15 @@
 - [문제 원본](https://www.acmicpc.net/problem/17479)
 - [17479.py](17479.py)
 - [코드 설명](https://yback.notion.site/BOJ-17479-49047105a229490bb698d4ae7ee25929)
+
+## BOJ 16562 <친구비>
+
+- [문제 원본](https://www.acmicpc.net/problem/16562)
+- [16562.py](16562.py)
+- [코드 설명](https://yback.notion.site/BOJ-16562-5154ba42017d4eb1b71fc715c908dfc8)
+
+## BOJ 1464 <뒤집기 3>
+
+- [문제 원본](https://www.acmicpc.net/problem/1464)
+- [1464.py](1464.py)
+- [코드 설명](https://yback.notion.site/BOJ-1464-3-23d0b57ac0f241379d9f19fc4ca83511)
