@@ -51,6 +51,7 @@ public class BOJ19542 {
         if (maxD >= D) {
             distance++;
         }
+//        System.out.println("curNode = " + curNode + ", maxD = " + maxD + ", distance = " + distance);
         return maxD + 1;
     }
 }
