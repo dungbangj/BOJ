@@ -21,3 +21,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/15805)
 - [BOJ15805.java](BOJ15805.java)
 - [코드 설명](https://yback.oopy.io/02118407-bef6-46d0-b0f2-dafa08bfc6c1)
+
+## BOJ 22856 <트리 순회>
+
+- [문제 원본](https://www.acmicpc.net/problem/22856)
+- [BOJ22856.java](BOJ22856.java)
+- [코드 설명](https://yback.oopy.io/1964a11f-a5e7-4bb6-ade7-7e42eb95726e)
