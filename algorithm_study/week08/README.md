@@ -27,3 +27,10 @@
 - [문제 원본](https://www.acmicpc.net/problem/22856)
 - [BOJ22856.java](BOJ22856.java)
 - [코드 설명](https://yback.oopy.io/1964a11f-a5e7-4bb6-ade7-7e42eb95726e)
+
+## BOJ 2250 <트리의 높이와 너비>
+
+- [문제 원본](https://www.acmicpc.net/problem/2250)
+- [BOJ2250.java](BOJ2250.java)
+- [코드 설명](https://yback.oopy.io/ed5f2602-7f13-4dc1-a39b-511fb3db5bc7)
+
