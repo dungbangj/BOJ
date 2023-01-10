@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -13,38 +12,50 @@ public class BOJ7569 {
     static int[] MOVE_COL = {0, 0, 1, -1, 0, 0};
     static int[] MOVE_ROW = {1, -1, 0, 0, 0, 0};
     static int[] MOVE_HEIGHT = {0, 0, 0, 0, 1, -1};
-    static Queue<Tomato> tomatoQueue;
+    static Queue<Tomato> tomatoQueue = new LinkedList<>();
     static int[][][] towerOfBoxes;
     static int col;
     static int row;
     static int height;
 
     public static void main(String[] args) throws IOException {
+        initBoxes();
+        fillBoxes();
+        
+        if (tomatoQueue.isEmpty()) {
+            System.out.println(-1);
+            return;
+        }
+        
+        rottenTomatoBFS();
+        System.out.println(howLong());
+    }
+
+    private static void initBoxes() throws IOException {
         st = new StringTokenizer(br.readLine());
         col = Integer.parseInt(st.nextToken());
         row = Integer.parseInt(st.nextToken());
         height = Integer.parseInt(st.nextToken());
 
         towerOfBoxes = new int[height][row][col];
-        tomatoQueue = new LinkedList<>();
+    }
 
+    public static void fillBoxes() throws IOException {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < row; j++) {
                 st = new StringTokenizer(br.readLine());
                 for (int k = 0; k < col; k++) {
                     towerOfBoxes[i][j][k] = Integer.parseInt(st.nextToken());
-                    if (towerOfBoxes[i][j][k] == 1) {
+                    if (isTomatoRotten(i, j, k)) {
                         tomatoQueue.add(new Tomato(i, j, k));
                     }
                 }
             }
         }
-        if (tomatoQueue.isEmpty()) {
-            System.out.println(-1);
-            return;
-        }
-        rottenTomatoBFS();
-        System.out.println(howLong());
+    }
+
+    private static boolean isTomatoRotten(int i, int j, int k) {
+        return towerOfBoxes[i][j][k] == 1;
     }
 
     public static void rottenTomatoBFS() {
@@ -56,17 +67,26 @@ public class BOJ7569 {
                 int checkCOl = tomato.col + MOVE_COL[i];
                 int checkHeight = tomato.height + MOVE_HEIGHT[i];
 
-                if (checkHeight >= 0 && checkCOl >= 0 && checkRow >= 0
-                    && checkHeight < height && checkCOl < col && checkRow < row) {
-
-                    if (towerOfBoxes[checkHeight][checkRow][checkCOl] == 0) {
+                if (isInBoxRange(checkRow, checkCOl, checkHeight) && stillNotRotten(checkRow, checkCOl, checkHeight)) {
                         tomatoQueue.add(new Tomato(checkHeight, checkRow, checkCOl));
-                        towerOfBoxes[checkHeight][checkRow][checkCOl] =
-                                towerOfBoxes[tomato.height][tomato.row][tomato.col] + 1;
-                    }
+                        makeTomatoRot(tomato, checkRow, checkCOl, checkHeight);
                 }
             }
         }
+    }
+
+    private static boolean isInBoxRange(int checkRow, int checkCOl, int checkHeight) {
+        return checkHeight >= 0 && checkCOl >= 0 && checkRow >= 0
+            && checkHeight < height && checkCOl < col && checkRow < row;
+    }
+
+    private static boolean stillNotRotten(int checkRow, int checkCOl, int checkHeight) {
+        return towerOfBoxes[checkHeight][checkRow][checkCOl] == 0;
+    }
+
+    private static void makeTomatoRot(Tomato tomato, int checkRow, int checkCOl, int checkHeight) {
+        towerOfBoxes[checkHeight][checkRow][checkCOl] =
+                towerOfBoxes[tomato.height][tomato.row][tomato.col] + 1;
     }
 
     public static int howLong() {
@@ -75,7 +95,7 @@ public class BOJ7569 {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < row; j++) {
                 for (int k = 0; k < col; k++) {
-                    if (towerOfBoxes[i][j][k] == 0) {
+                    if (stillNotRotten(i, j, k)) {
                         return -1;
                     }
                     maxDay = Math.max(maxDay, towerOfBoxes[i][j][k]);
