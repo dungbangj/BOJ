@@ -9,3 +9,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/7576)
 - [BOJ7576.java](BOJ7576.java)
 - [코드 설명](https://yback.oopy.io/10387576-6072-40bc-9ce8-d895029b8e12)
+
+## BOJ16928 <뱀과 사다리 게임>
+
+- [문제 원본](https://www.acmicpc.net/problem/16928)
+- [BOJ16928.java](BOJ16928.java)
+- [코드 설명](https://yback.oopy.io/0b60c704-9c0e-44ec-a072-71cabc0ce14f)
