@@ -21,3 +21,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/1707)
 - [BOJ1707.java](BOJ1707.java)
 - [코드 설명](https://yback.oopy.io/fab40353-1272-445a-9ff0-e71c48333ca1)
+
+## BOJ2206 <벽 부수고 이동하기>
+
+- [문제 원본](https://www.acmicpc.net/problem/2206)
+- [BOJ2206.java](BOJ2206.java)
+- [코드 설명](https://yback.oopy.io/a6e48928-a481-4534-baeb-e9b3e318a5d4)
