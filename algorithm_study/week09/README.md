@@ -27,3 +27,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/2206)
 - [BOJ2206.java](BOJ2206.java)
 - [코드 설명](https://yback.oopy.io/a6e48928-a481-4534-baeb-e9b3e318a5d4)
+
+## BOJ1520 <내리막 길>
+
+- [문제 원본](https://www.acmicpc.net/problem/1520)
+- [BOJ1520.java](BOJ1520.java)
+- [코드 설명](https://yback.oopy.io/22638dad-87d7-48ea-b550-d8d23353284a)
