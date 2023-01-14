@@ -39,3 +39,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/16953)
 - [BOJ16953.java](BOJ16953.java)
 - [코드 설명](https://yback.oopy.io/10f984d2-ba94-469b-9808-bd3a80e835f2)
+
+## BOJ1325 <효율적인 해킹>
+
+- [문제 원본](https://www.acmicpc.net/problem/1325)
+- [BOJ1325.java](BOJ1325.java)
+- [코드 설명](https://yback.oopy.io/51517957-19e3-4056-bc3d-137b6d09ee1f)
