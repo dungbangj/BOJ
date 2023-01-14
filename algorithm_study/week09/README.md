@@ -33,3 +33,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/1520)
 - [BOJ1520.java](BOJ1520.java)
 - [코드 설명](https://yback.oopy.io/22638dad-87d7-48ea-b550-d8d23353284a)
+
+## BOJ16953 <A -\> B>
+
+- [문제 원본](https://www.acmicpc.net/problem/16953)
+- [BOJ16953.java](BOJ16953.java)
+- [코드 설명](https://yback.oopy.io/10f984d2-ba94-469b-9808-bd3a80e835f2)
