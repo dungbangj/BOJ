@@ -14,3 +14,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/1456)
 - [BOJ1456.java](BOJ1456.java)
 - [코드 설명](https://yback.oopy.io/21725c61-c710-4a0c-85ac-823c5ae41664)
+
+## BOJ1990 <소수인팰린드롬>
+- [문제 원본](https://www.acmicpc.net/problem/1990)
+- [BOJ1990.java](BOJ1990.java)
+- [코드 설명](https://yback.oopy.io/9d74e935-f3a4-436c-83f4-a7ef1784d310)
