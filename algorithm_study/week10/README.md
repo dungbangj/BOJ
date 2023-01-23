@@ -19,3 +19,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/1990)
 - [BOJ1990.java](BOJ1990.java)
 - [코드 설명](https://yback.oopy.io/9d74e935-f3a4-436c-83f4-a7ef1784d310)
+
+## BOJ16563 <어려운 소인수분해>
+- [문제 원본](https://www.acmicpc.net/problem/16563)
+- [BOJ16563.java](BOJ16563.java)
+- [코드 설명](https://yback.oopy.io/83169e9b-4872-40aa-adf9-c008c62ee858)

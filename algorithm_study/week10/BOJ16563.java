@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ16563 {
@@ -13,27 +12,59 @@ public class BOJ16563 {
     static int[] inputs;
     static boolean[] nums;
     static ArrayList<Integer> primes = new ArrayList<>();
-    static int max = 5000000;
+    static int max;
 
     public static void main(String[] args) throws IOException {
-        int N = Integer.parseInt(br.readLine());
-        st = new StringTokenizer(br.readLine());
-        inputs = new int[N];
-        nums = new boolean[max + 1];
-
-        getInputs(N);
+        getInputs();
         eratos();
         fillPrimes();
-
-        int[] inputSqrt = makeInputSqrt();
-
-        makeResult(inputSqrt);
+        makeResult();
         System.out.print(sb);
     }
 
-    private static void makeResult(int[] inputSqrt) {
+    private static void getInputs() throws IOException {
+        int N = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        inputs = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            inputs[i] = Integer.parseInt(st.nextToken());
+            if (max < inputs[i]) {
+                max = inputs[i];
+            }
+        }
+    }
+
+    private static void eratos() {
+        nums = new boolean[max + 1];
+
+        nums[0] = nums[1] = true;
+        for (int i = 2; i <= (int) Math.sqrt(max); i++) {
+            if (nums[i])
+                continue;
+            for (int j = 2; i * j <= max; j++) {
+                nums[i * j] = true;
+            }
+        }
+    }
+
+    private static void fillPrimes() {
+        for (int i = 2; i <= max; i++) {
+            if (isPrime(i)) {
+                primes.add(i);
+            }
+        }
+    }
+
+    private static boolean isPrime(int i) {
+        return !nums[i];
+    }
+
+    private static void makeResult() {
+        int[] inputSqrt = makeInputSqrt();
+
         for (int i = 0; i < inputSqrt.length; i++) {
-            if (!nums[inputs[i]]) {
+            if (isPrime(inputs[i])) {
                 sb.append(inputs[i]).append("\n");
                 continue;
             }
@@ -44,10 +75,10 @@ public class BOJ16563 {
                 if (onePrime > inputSqrt[i]) {
                     break;
                 }
-                while (inputs[i] % onePrime == 0) {
+                while (dividable(i, onePrime)) {
                     sb.append(onePrime).append(" ");
                     inputs[i] /= onePrime;
-                    if (!nums[inputs[i]]) {
+                    if (isPrime(inputs[i])) {
                         sb.append(inputs[i]).append(" ");
                         flag = 1;
                         break;
@@ -60,6 +91,10 @@ public class BOJ16563 {
         }
     }
 
+    private static boolean dividable(int i, int onePrime) {
+        return inputs[i] % onePrime == 0;
+    }
+
     private static int[] makeInputSqrt() {
         int[] inputSqrt = new int[inputs.length];
 
@@ -67,31 +102,6 @@ public class BOJ16563 {
             inputSqrt[i] = (int)Math.sqrt(inputs[i]) + 1;
         }
         return inputSqrt;
-    }
-
-    private static void getInputs(int N) {
-        for (int i = 0; i < N; i++) {
-            inputs[i] = Integer.parseInt(st.nextToken());
-        }
-    }
-
-    private static void fillPrimes() {
-        for (int i = 2; i <= max; i++) {
-            if (!nums[i]) {
-                primes.add(i);
-            }
-        }
-    }
-
-    private static void eratos() {
-        nums[0] = nums[1] = true;
-        for (int i = 2; i <= (int) Math.sqrt(max); i++) {
-            if (nums[i])
-                continue;
-            for (int j = 2; i * j <= max; j++) {
-                nums[i * j] = true;
-            }
-        }
     }
 
 }
