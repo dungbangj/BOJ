@@ -24,3 +24,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/16563)
 - [BOJ16563.java](BOJ16563.java)
 - [코드 설명](https://yback.oopy.io/83169e9b-4872-40aa-adf9-c008c62ee858)
+
+## BOJ2904 <수학은 너무 쉬워>
+- [문제 원본](https://www.acmicpc.net/problem/2904)
+- [BOJ2904.java](BOJ2904.java)
+- [코드 설명](https://yback.oopy.io/81822b12-35b9-498b-892d-c0f3bbf31763)
