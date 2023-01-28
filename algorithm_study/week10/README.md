@@ -30,7 +30,7 @@
 - [BOJ2904.java](BOJ2904.java)
 - [코드 설명](https://yback.oopy.io/81822b12-35b9-498b-892d-c0f3bbf31763)
 
-## BOJ1153 <수학은 너무 쉬워>
+## BOJ1153 <네 개의 소수>
 - [문제 원본](https://www.acmicpc.net/problem/1153)
 - [BOJ1153.java](BOJ1153.java)
 - [코드 설명](https://yback.oopy.io/694eba0f-5c29-4047-a340-fccc8dd8239a)
