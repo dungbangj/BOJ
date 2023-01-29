@@ -34,3 +34,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/1153)
 - [BOJ1153.java](BOJ1153.java)
 - [코드 설명](https://yback.oopy.io/694eba0f-5c29-4047-a340-fccc8dd8239a)
+
+## BOJ16134 <네 개의 소수>
+- [문제 원본](https://www.acmicpc.net/problem/16134)
+- [BOJ16134.java](BOJ16134.java)
+- [코드 설명](https://yback.oopy.io/ddd552dd-51df-4eab-a0bc-104c532dfb3b)
