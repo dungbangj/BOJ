@@ -18,3 +18,8 @@
 - [BOJ1850.java](BOJ1850.java)
 - [코드 설명](https://yback.oopy.io/bd03354c-e086-4b23-969c-5c689c21fea7)
 
+## BOJ9613 GCD 합
+- [문제 원본](https://www.acmicpc.net/problem/9613)
+- [BOJ9613.java](BOJ9613.java)
+- [코드 설명](https://yback.oopy.io/ccbd5f77-dc3c-4654-a748-ba9b8ba6a1d3)
+
