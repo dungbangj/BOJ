@@ -23,3 +23,8 @@
 - [BOJ9613.java](BOJ9613.java)
 - [코드 설명](https://yback.oopy.io/ccbd5f77-dc3c-4654-a748-ba9b8ba6a1d3)
 
+## BOJ2312 수 복원하기
+- [문제 원본](https://www.acmicpc.net/problem/2312 )
+- [BOJ2312.java](BOJ2312.java)
+- [코드 설명](https://yback.oopy.io/4d799caa-f5d5-4270-b7da-74c4c758d040)
+
