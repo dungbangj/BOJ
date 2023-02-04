@@ -28,3 +28,8 @@
 - [BOJ2312.java](BOJ2312.java)
 - [코드 설명](https://yback.oopy.io/4d799caa-f5d5-4270-b7da-74c4c758d040)
 
+## BOJ6588 골드바흐의 추측
+- [문제 원본](https://www.acmicpc.net/problem/6588 )
+- [BOJ6588.java](BOJ6588.java)
+- [코드 설명](https://yback.oopy.io/a0534b20-354b-4275-b8c7-9767d2090828)
+
