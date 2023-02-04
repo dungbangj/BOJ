@@ -38,3 +38,8 @@
 - [BOJ9421.java](BOJ9421.java)
 - [코드 설명](https://yback.oopy.io/024f3212-7c80-46ee-b62d-dcd089a95634)
 
+## BOJ2725 보이는 점의 개수
+- [문제 원본](https://www.acmicpc.net/problem/2725)
+- [BOJ2725.java](BOJ2725.java)
+- [코드 설명](https://yback.oopy.io/8b5f8153-08d8-4576-a565-6da960d81d02)
+
