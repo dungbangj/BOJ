@@ -13,3 +13,8 @@
 - [BOJ13241.java](BOJ13241.java)
 - [코드 설명](https://yback.oopy.io/617d0a0b-7e4b-4a32-aeea-e2a987a1089b)
 
+## BOJ1850 <Base Conversion>
+- [문제 원본](https://www.acmicpc.net/problem/1850)
+- [BOJ1850.java](BOJ1850.java)
+- [코드 설명](https://yback.oopy.io/bd03354c-e086-4b23-969c-5c689c21fea7)
+
