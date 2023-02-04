@@ -8,12 +8,12 @@
 - [BOJ11576.java](BOJ11576.java)
 - [코드 설명](https://yback.oopy.io/bd2c4dfa-3e7b-4342-b17a-3106a33b56c5)
 
-## BOJ13241 <Base Conversion>
+## BOJ13241 <최소공배수>
 - [문제 원본](https://www.acmicpc.net/problem/13241)
 - [BOJ13241.java](BOJ13241.java)
 - [코드 설명](https://yback.oopy.io/617d0a0b-7e4b-4a32-aeea-e2a987a1089b)
 
-## BOJ1850 <Base Conversion>
+## BOJ1850 <최대공약수>
 - [문제 원본](https://www.acmicpc.net/problem/1850)
 - [BOJ1850.java](BOJ1850.java)
 - [코드 설명](https://yback.oopy.io/bd03354c-e086-4b23-969c-5c689c21fea7)
