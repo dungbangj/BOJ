@@ -37,7 +37,7 @@ public class BOJ2725 {
     }
 
     private static boolean canDrawLine(int i, int j) {
-        return i == i / gcd(i, j) && j == j / gcd(i, j);
+        return gcd(i, j) == 1;
     }
 
     private static int gcd(int i, int j) {
