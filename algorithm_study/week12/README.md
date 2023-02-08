@@ -12,3 +12,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/16400)
 - [BOJ16400.java](BOJ16400.java)
 - [코드 설명](https://yback.oopy.io/f28d670e-ebbb-41af-a3a9-36cf87c232d8)
+
+## BOJ23048 자연수 색칠하기
+- [문제 원본](https://www.acmicpc.net/problem/23048)
+- [BOJ23048.java](BOJ23048.java)
+- [코드 설명](https://yback.oopy.io/c5f15b19-8c7d-4a94-9caf-aa36483c4deb)
