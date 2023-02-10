@@ -17,3 +17,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/23048)
 - [BOJ23048.java](BOJ23048.java)
 - [코드 설명](https://yback.oopy.io/c5f15b19-8c7d-4a94-9caf-aa36483c4deb)
+
+## BOJ3671 산업 스파이의 편지
+- [문제 원본](https://www.acmicpc.net/problem/3671)
+- [BOJ3671.java](BOJ3671.java)
+- [코드 설명](https://yback.oopy.io/05f7758f-6d04-4d96-8538-7cafb71c56c5)
