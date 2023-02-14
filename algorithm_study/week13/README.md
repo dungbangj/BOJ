@@ -8,7 +8,12 @@
 - [BOJ13301.java](BOJ13301.java)
 - [코드 설명](https://yback.oopy.io/9772e34e-a902-4e5d-aad2-b0d82d48396e)
 
-## BOJ2193 타일 장식물
+## BOJ2193 이친수
 - [문제 원본](https://www.acmicpc.net/problem/2193)
 - [BOJ2193.java](BOJ2193.java)
 - [코드 설명](https://yback.oopy.io/12110cdd-bc53-466c-bd30-85fbd111570e)
+
+## BOJ11052 카드 구매하기
+- [문제 원본](https://www.acmicpc.net/problem/11052)
+- [BOJ11052.java](BOJ11052.java)
+- [코드 설명](https://yback.oopy.io/d24b0a17-3d81-4931-bf14-78a7a192c42f)
