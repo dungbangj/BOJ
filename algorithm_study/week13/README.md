@@ -7,3 +7,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/13301)
 - [BOJ13301.java](BOJ13301.java)
 - [코드 설명](https://yback.oopy.io/9772e34e-a902-4e5d-aad2-b0d82d48396e)
+
+## BOJ2193 타일 장식물
+- [문제 원본](https://www.acmicpc.net/problem/2193)
+- [BOJ2193.java](BOJ2193.java)
+- [코드 설명](https://yback.oopy.io/12110cdd-bc53-466c-bd30-85fbd111570e)
