@@ -17,3 +17,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/11052)
 - [BOJ11052.java](BOJ11052.java)
 - [코드 설명](https://yback.oopy.io/d24b0a17-3d81-4931-bf14-78a7a192c42f)
+
+## BOJ2839 설탕 배달
+- [문제 원본](https://www.acmicpc.net/problem/2839)
+- [BOJ2839.java](BOJ2839.java)
+- [코드 설명](https://yback.oopy.io/029e170f-f576-49b7-9c23-7a196a465a19)
