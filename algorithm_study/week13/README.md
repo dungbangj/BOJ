@@ -27,3 +27,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/10826)
 - [BOJ10826.java](BOJ10826.java)
 - [코드 설명](https://yback.oopy.io/d1653bef-8582-4716-b51c-ff4aadbdcd8a)
+
+## BOJ9655 돌 게임
+- [문제 원본](https://www.acmicpc.net/problem/9655)
+- [BOJ9655.java](BOJ9655.java)
+- [코드 설명](https://yback.oopy.io/c1956e48-3d97-4655-80a3-be75d49dd4d2)
