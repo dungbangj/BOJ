@@ -32,3 +32,8 @@
 - [문제 원본](https://www.acmicpc.net/problem/9655)
 - [BOJ9655.java](BOJ9655.java)
 - [코드 설명](https://yback.oopy.io/c1956e48-3d97-4655-80a3-be75d49dd4d2)
+
+## BOJ22971 증가하는 부분 수열의 개수
+- [문제 원본](https://www.acmicpc.net/problem/22971 )
+- [BOJ22971.java](BOJ22971.java)
+- [코드 설명](https://yback.oopy.io/3f287f1f-610e-4cc6-b7a6-fc2a96650a0e)
