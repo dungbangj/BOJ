@@ -37,3 +37,9 @@
 - [문제 원본](https://www.acmicpc.net/problem/22971 )
 - [BOJ22971.java](BOJ22971.java)
 - [코드 설명](https://yback.oopy.io/3f287f1f-610e-4cc6-b7a6-fc2a96650a0e)
+
+## BOJ25644 최대 상승
+- [문제 원본](https://www.acmicpc.net/problem/25644 )
+- [BOJ25644.java](BOJ25644.java)
+- [코드 설명](https://yback.oopy.io/7dc3358e-1295-44ef-ba91-c5a0b841008c)
+
