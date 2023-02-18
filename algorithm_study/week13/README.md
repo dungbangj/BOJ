@@ -43,3 +43,8 @@
 - [BOJ25644.java](BOJ25644.java)
 - [코드 설명](https://yback.oopy.io/7dc3358e-1295-44ef-ba91-c5a0b841008c)
 
+## BOJ2876 그래픽스 퀴즈
+- [문제 원본](https://www.acmicpc.net/problem/2876 )
+- [BOJ2876.java](BOJ2876.java)
+- [코드 설명](https://yback.oopy.io/f7ba5555-4dfa-4a2f-88e9-fe6dd0610d0f)
+
