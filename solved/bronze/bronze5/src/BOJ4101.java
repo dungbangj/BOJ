@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ2738 {
+public class BOJ4101 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -12,30 +12,23 @@ public class BOJ2738 {
     static StringTokenizer st;
 
     public static void main(String[] args) throws Exception {
-        BOJ2738.solution();
+        solution();
     }
 
     private static void solution() throws Exception {
 
-        st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        int[][] arr = new int[N][M];
-        for (int i = 0; i < N; i++) {
+        String input;
+        while (true) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < M; j++) {
-                arr[i][j] = Integer.parseInt(st.nextToken());
+            int A = Integer.parseInt(st.nextToken());
+            int B = Integer.parseInt(st.nextToken());
+            if (A == 0 && B == 0) {
+                break;
             }
-        }
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < M; j++) {
-                arr[i][j] += Integer.parseInt(st.nextToken());
-            }
-        }
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                sb.append(arr[i][j]).append(" ");
+            if (A > B) {
+                sb.append("Yes");
+            } else {
+                sb.append("No");
             }
             sb.append("\n");
         }
@@ -43,4 +36,5 @@ public class BOJ2738 {
         bw.flush();
         bw.close();
     }
+
 }

@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ2420 {
+public class BOJ15962 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -16,18 +16,9 @@ public class BOJ2420 {
     }
 
     private static void solution() throws Exception {
-        st = new StringTokenizer(br.readLine());
-        long N = Long.parseLong(st.nextToken());
-        long M = Long.parseLong(st.nextToken());
-        long result = N - M;
-
-        if (result < 0) {
-            sb.append(-result).append("\n");
-        } else {
-            sb.append(result).append("\n");
-        }
-        bw.write(sb.toString());
+        bw.write("파이팅!!");
         bw.flush();
         bw.close();
     }
+
 }
