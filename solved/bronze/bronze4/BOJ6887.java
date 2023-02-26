@@ -30,5 +30,4 @@ public class BOJ6887 {
         bw.flush();
         bw.close();
     }
-
 }
