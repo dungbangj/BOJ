@@ -2,3 +2,4 @@
 input.txt
 package-lock.json
 package.json
+.gitignore
