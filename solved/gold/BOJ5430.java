@@ -1,12 +1,12 @@
 import java.io.*;
 import java.util.*;
+import java.lang.*;
 
 public class BOJ5430 {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringTokenizer st;
 
 		int T = Integer.parseInt(br.readLine());
 
@@ -14,9 +14,9 @@ public class BOJ5430 {
 			char[] cmd = br.readLine().toCharArray();
 			int n = Integer.parseInt(br.readLine());
 			String[] arrStr = br.readLine().replaceAll("\\[|\\]", "").split(",");
-			Deque<Integer> arr = new LinkedList<>();
+			Deque<String> arr = new LinkedList<>();
 			for (int j = 0; j < n; j++) {
-				arr.add(Integer.parseInt(arrStr[j]));
+				arr.add(arrStr[j]);
 			}
 
 			boolean reverse = false;
@@ -43,12 +43,12 @@ public class BOJ5430 {
 				bw.write("[");
 				if (!arr.isEmpty()) {
 					if (reverse) {
-						bw.write(String.valueOf(arr.pollLast()));
+						bw.write(arr.pollLast());
 						while (!arr.isEmpty()) {
 							bw.write("," + arr.pollLast());
 						}
 					} else {
-						bw.write(String.valueOf(arr.pollFirst()));
+						bw.write(arr.pollFirst());
 						while (!arr.isEmpty()) {
 							bw.write("," + arr.pollFirst());
 						}
