@@ -23,11 +23,9 @@ public class BOJ1976 {
 			int[] inputConnection = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 			inputConnection[i - 1] = 1;
 
+//			System.out.println("inputConnection = " + Arrays.toString(inputConnection));
 			for (int j = 0; j < inputConnection.length; j++) {
-				if (inputConnection[j] == 1) {
-					cityConnects.get(i).add(j + 1);
-					cityConnects.get(j + 1).add(i);
-				}
+				if (inputConnection[j] == 1) cityConnects.get(i).add(j + 1);
 			}
 		}
 
@@ -37,9 +35,7 @@ public class BOJ1976 {
 		int NoFlag = 0;
 
 		for (int i = 0; i < inputTravelOrder.length - 1; i++) {
-			if (!bfs(inputTravelOrder[i], inputTravelOrder[i + 1])) {
-				NoFlag = 1;
-			}
+			if (!bfs(inputTravelOrder[i], inputTravelOrder[i + 1])) NoFlag = 1;
 		}
 
 		String result = (NoFlag == 1) ? "NO\n" : "YES\n";
