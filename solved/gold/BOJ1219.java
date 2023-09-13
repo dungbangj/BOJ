@@ -7,12 +7,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BOJ1219 {
+	static final long MIN = Long.MIN_VALUE;
+
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static int N, S, T, M;
 	static ArrayList<ArrayList<City>> cities = new ArrayList<>();
-	static int[] addMoney;
-	static long[] totalMoney;
+	static int[] earnMoney;
+	static long[] totalEarn;
 	static boolean update;
 
 	public static void main(String[] args) throws IOException {
@@ -28,22 +30,29 @@ public class BOJ1219 {
 
 		for (int i = 0; i < M; i++) {
 			int[] inputSTM = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			int S = inputSTM[0];
-			int T = inputSTM[1];
-			int M = inputSTM[2];
+			int start = inputSTM[0];
+			int target = inputSTM[1];
+			int money = inputSTM[2];
 
-			cities.get(S).add(new City(T, M));
+			cities.get(start).add(new City(target, money));
 		}
 
-		addMoney = new int[N];
-		int[] inputMoney = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		if (N >= 0) System.arraycopy(inputMoney, 0, addMoney, 0, N);
+//		System.out.println("\ncities = " + cities);
 
-		totalMoney = new long[N];
+		earnMoney = new int[N];
+		int[] inputMoney = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		if (N >= 0) System.arraycopy(inputMoney, 0, earnMoney, 0, N);
+
+		totalEarn = new long[N];
 		if (!bfs(S, T)) bw.write("gg\n");
 		else {
 			update = false;
+			bellmanFordOrigin(S);
+			if (bellmanFordCycle(S, T)) bw.write("Gee\n");
+			else bw.write(totalEarn[T] + "\n");
 		}
+		bw.flush();
+		bw.close();
 	}
 
 	static boolean bfs(int start, int target) {
@@ -68,18 +77,18 @@ public class BOJ1219 {
 		return false;
 	}
 
-	static boolean bellmanFordOrigin(int start, int target) {
-		Arrays.fill(totalMoney, Long.MIN_VALUE);
-		totalMoney[start] = addMoney[start];
+	static boolean bellmanFordOrigin(int start) {
+		Arrays.fill(totalEarn, MIN);
+		totalEarn[start] = earnMoney[start];
 
 		for (int i = 0; i < N - 1; i++) {
 			update = false;
 
 			for (int j = 0; j < N; j++) {
 				for (City city : cities.get(j)) {
-					if (totalMoney[j] == Integer.MIN_VALUE) break;
-					if (totalMoney[city.dest] < totalMoney[j] + city.money + addMoney[city.dest]) {
-						totalMoney[city.dest] = totalMoney[j] + city.money + addMoney[city.dest];
+					if (totalEarn[j] == MIN) break;
+					if (totalEarn[city.dest] < totalEarn[j] - city.money + earnMoney[city.dest]) {
+						totalEarn[city.dest] = totalEarn[j] - city.money + earnMoney[city.dest];
 						update = true;
 					}
 				}
@@ -95,8 +104,8 @@ public class BOJ1219 {
 		ArrayList<Integer> cycleCities = new ArrayList<>();
 		for (int i = 0; i < N; i++) {
 			for (City city : cities.get(i)) {
-				if (totalMoney[i] == Integer.MIN_VALUE) break;
-				if (totalMoney[city.dest] < totalMoney[i] + city.money + addMoney[city.dest]) {
+				if (totalEarn[i] == MIN) break;
+				if (totalEarn[city.dest] < totalEarn[i] - city.money + earnMoney[city.dest]) {
 					cycleCities.add(i);
 					cycleCities.add(city.dest);
 				}
@@ -106,15 +115,24 @@ public class BOJ1219 {
 		for (Integer cycleCity : cycleCities) {
 			if (bfs(cycleCity, target)) return true;
 		}
-		Arrays.fill(totalMoney, Integer.MIN_VALUE);
-		totalMoney[start] = addMoney[start];
+
+		Arrays.fill(totalEarn, MIN);
+		totalEarn[start] = earnMoney[start];
 
 		for (int i = 0; i < N - 1; i++) {
 			update = false;
 			for (int j = 0; j < N; j++) {
-
+				for (City city : cities.get(j)) {
+					if (cycleCities.contains(j) || totalEarn[j] == MIN) break;
+					if (cycleCities.contains(city.dest) || totalEarn[city.dest] < totalEarn[j] - city.money + earnMoney[city.dest]) {
+						totalEarn[city.dest] = totalEarn[j] - city.money + earnMoney[city.dest];
+						update = true;
+					}
+				}
 			}
+			if (!update) break;
 		}
+		return false;
 	}
 
 	static class City {
