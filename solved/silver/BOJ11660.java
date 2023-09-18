@@ -1,59 +1,56 @@
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
+/**
+ * 고려해야할 것
+ * - 2차원 구간 합 공식
+ * - 최악 시간 복잡도: N3
+ * - 최선 시간 복잡도: N2
+ */
 public class BOJ11660 {
-
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	public static void main(String[] args) throws IOException {
-		String[] input = br.readLine().split(" ");
-		int N = Integer.parseInt(input[0]);
-		int M = Integer.parseInt(input[1]);
-		int[][] arr = new int[N + 1][N + 1];
-		int[][] sumArr = new int[N + 1][N + 1];
+		int[] inputNM = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		int N = inputNM[0];
+		int M = inputNM[1];
+
+		int[][] matrix = new int[N + 1][N + 1];
+		int[][] sumDeepArr = new int[N + 1][N + 1];
 
 		for (int i = 1; i <= N; i++) {
-			String[] oneLine = br.readLine().split(" ");
+			int[] inputLine = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 			for (int j = 1; j <= N; j++) {
-				arr[i][j] = Integer.parseInt(oneLine[j - 1]);
+				matrix[i][j] = inputLine[j - 1];
 			}
 		}
 
-
-//		for (int i = 0; i <= N; i++) {
-//			System.out.println(Arrays.toString(arr[i]));
-//		}
-
-		sumArr[1][1] = arr[1][1];
-		for (int i = 1; i < N; i++) {
-			sumArr[1][i + 1] = sumArr[1][i] + arr[1][i + 1];
-			sumArr[i + 1][1] = sumArr[i][1] + arr[i + 1][1];
-		}
-
-//		for (int i = 0; i <= N; i++) {
-//			System.out.println(Arrays.toString(sumArr[i]));
-//		}
-
-		for (int i = 2; i <= N; i++) {
-			for (int j = 2; j <= N; j++) {
-				sumArr[i][j] = arr[i][j] + sumArr[i - 1][j] + sumArr[i][j - 1] - sumArr[i - 1][j - 1];
+		/**
+		 * 2차원 구간 합 공식: D[i][j] = D[i][j - 1] + D[i - 1][j] - D[i - 1][j - 1] + A[i][j]
+		 * 가로와 세로를 더한 뒤에 겹치는 부분을 빼주고, 새롭게 추가되는 한 칸을 더해주면 된다.
+		 * 지금 구하는 구간 합의 기준은 항상 (1, 1)이다. 이 기준을 중심으로 모든 구간의 합을 구해놓는다.
+		 */
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= N; j++) {
+				sumDeepArr[i][j] = sumDeepArr[i][j - 1] + sumDeepArr[i - 1][j] - sumDeepArr[i - 1][j - 1] + matrix[i][j];
 			}
 		}
-//		System.out.println();
-		for (int i = 0; i <= N; i++) {
-//			System.out.println(Arrays.toString(sumArr[i]));
-		}
 
+		/**
+		 * 이제 (1, 1)을 기준으로 하는 모든 구간의 합이 구해졌으므로, 시작점과 끝점이 따로 주어지는 구간합에서는 이를 응용하면 된다.
+		 * 시작점과 끝점이 정해져 있는 2차원 구간 합 공식: D[X2][Y2] ~ D[X1][Y1] = D[X2][Y2] - (D[X1 - 1][Y2] + D[X2][Y1 - 1]) + D[X1 - 1][Y1 - 1]
+		 * 시작점(D[X1][Y1])에서 한 칸 줄어든 칸(D[X1 - 1][Y1 - 1])을 기준으로 두고 계산하면 된다. 세로와 가로 구간합을 빼주고, 겹치는 부분이 두 번 빼졌으니 한 번 더해주는 것이다.
+		 */
 		for (int i = 0; i < M; i++) {
-			String[] oneInput = br.readLine().split(" ");
-			int x1 = Integer.parseInt(oneInput[0]);
-			int y1 = Integer.parseInt(oneInput[1]);
-			int x2 = Integer.parseInt(oneInput[2]);
-			int y2 = Integer.parseInt(oneInput[3]);
+			int[] inputXYs = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			int X1 = inputXYs[0];
+			int Y1 = inputXYs[1];
+			int X2 = inputXYs[2];
+			int Y2 = inputXYs[3];
 
-			int ans = sumArr[x2][y2] + sumArr[x1 - 1][y1 - 1] - sumArr[x1 - 1][y2] - sumArr[x2][y1 - 1];
-			bw.write(ans + "\n");
+			int resultSum = sumDeepArr[X2][Y2] - (sumDeepArr[X2][Y1 - 1] + sumDeepArr[X1 - 1][Y2]) + sumDeepArr[X1 - 1][Y1 - 1];
+			bw.write(resultSum + "\n");
 		}
 		bw.flush();
 		bw.close();
