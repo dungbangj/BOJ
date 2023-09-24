@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
 public class BOJ11004 {
 
@@ -7,21 +7,23 @@ public class BOJ11004 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		int[] inputNM = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		int[] inputNK = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 		int[] inputArr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		int N = inputNM[0], M = inputNM[1];
+		int N = inputNK[0];
+		int K = inputNK[1];
+
+//		System.out.println(Arrays.toString(inputArr));
 
 		mergeSort(inputArr);
-//		System.out.println("N = " + N);
-//		System.out.println("M = " + M);
+
 //		System.out.println(Arrays.toString(inputArr));
-		bw.write(inputArr[M - 1] + "\n");
+
+		bw.write(inputArr[K - 1] + "\n");
 		bw.flush();
 		bw.close();
-		br.close();
 	}
 
-	private static void mergeSort(int[] inputArr) {
+	static void mergeSort(int[] inputArr) {
 		if (inputArr == null || inputArr.length <= 1) {
 			return;
 		}
@@ -36,23 +38,19 @@ public class BOJ11004 {
 		merge(inputArr, leftArr, rightArr);
 	}
 
-	private static void merge(int[] inputArr, int[] left, int[] right) {
-		int i = 0, j = 0, k = 0;
+	static void merge(int[] inputArr, int[] leftArr, int[] rightArr) {
+		int i = 0, l = 0, r = 0;
 
-		while (i < left.length && j < right.length) {
-			if (left[i] <= right[j]) {
-				inputArr[k++] = left[i++];
-			} else {
-				inputArr[k++] = right[j++];
-			}
+		while (l < leftArr.length && r < rightArr.length) {
+			if (leftArr[l] <= rightArr[r]) inputArr[i++] = leftArr[l++];
+			else inputArr[i++] = rightArr[r++];
 		}
 
-		while (i < left.length) {
-			inputArr[k++] = left[i++];
+		while (l < leftArr.length) {
+			inputArr[i++] = leftArr[l++];
 		}
-
-		while (j < right.length) {
-			inputArr[k++] = right[j++];
+		while (r < rightArr.length) {
+			inputArr[i++] = rightArr[r++];
 		}
 	}
 }

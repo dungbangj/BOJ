@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
 public class BOJ11399 {
 	public static void main(String[] args) throws IOException {
@@ -7,55 +7,30 @@ public class BOJ11399 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int N = Integer.parseInt(br.readLine());
-		int[] inputArr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-//		System.out.println(Arrays.toString(inputArr));
-		mergeSort(inputArr);
-//		System.out.println(Arrays.toString(inputArr));
+		int[] inputNums = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		insertionSort(inputNums);
 
-		long sum = 0;
-		for (int i = 0; i < inputArr.length; i++) {
-			for (int j = 0; j < i + 1; j++) {
-//				System.out.println(inputArr[j]);
-				sum += inputArr[j];
-			}
+		int sum = 0;
+		int sumAccum = 0;
+		for (int num : inputNums) {
+			sum += num;
+			sumAccum += sum;
 		}
-		bw.write(sum + "\n");
+		bw.write(sumAccum + "\n");
 		bw.flush();
 		bw.close();
 	}
 
-	private static void mergeSort(int[] inputArr) {
+	static void insertionSort(int[] nums) {
+		for (int i = 1; i < nums.length; i++) {
+			int key = nums[i];
+			int j = i - 1;
 
-		if (inputArr == null || inputArr.length <= 1) {
-			return;
-		}
-
-		int mid = inputArr.length / 2;
-
-		int[] leftArr = Arrays.copyOfRange(inputArr, 0, mid);
-		int[] rightArr = Arrays.copyOfRange(inputArr, mid, inputArr.length);
-
-		mergeSort(leftArr);
-		mergeSort(rightArr);
-
-		merge(inputArr, leftArr, rightArr);
-	}
-
-	private static void merge(int[] inputArr, int[] left, int[] right) {
-		int i = 0, j = 0, k = 0;
-
-		while (i < left.length && j < right.length) {
-			if (left[i] <= right[j]) {
-				inputArr[k++] = left[i++];
-			} else {
-				inputArr[k++] = right[j++];
+			while (j >= 0 && nums[j] > key) {
+				nums[j + 1] = nums[j--];
 			}
-		}
-		while (i < left.length) {
-			inputArr[k++] = left[i++];
-		}
-		while (j < right.length) {
-			inputArr[k++] = right[j++];
+
+			nums[j + 1] = key;
 		}
 	}
 }

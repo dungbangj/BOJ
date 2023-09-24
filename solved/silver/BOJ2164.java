@@ -9,20 +9,18 @@ public class BOJ2164 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int N = Integer.parseInt(br.readLine());
-		int flag = 1;
-		int num = 1;
 		Queue<Integer> queue = new LinkedList<>();
 
 		for (int i = 1; i <= N; i++) {
-			queue.offer(i);
+			queue.add(i);
 		}
 
-		while (queue.size() > 1) {
+		while (queue.size() != 1) {
 			queue.poll();
 			queue.add(queue.poll());
 		}
 
-		bw.write(queue.poll() + "\n");
+		bw.write(queue.peek() + "\n");
 		bw.flush();
 		bw.close();
 	}
