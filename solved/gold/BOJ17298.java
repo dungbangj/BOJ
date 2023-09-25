@@ -1,27 +1,53 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
 
 public class BOJ17298 {
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
 	public static void main(String[] args) throws IOException {
-		int N = Integer.parseInt(br.readLine());
-		int[] inputArr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		int[] result = new int[N];
-		Stack<Integer> stack = new Stack<>();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		for (int i = 0; i < N; i++) {
-			while (!stack.isEmpty() && inputArr[stack.peek()] < inputArr[i]) {
-				result[stack.pop()] = inputArr[i];
+		int N = Integer.parseInt(br.readLine());
+		int[] ansArr = new int[N];
+		int[] inputNums = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		ArrayList<Num> nums = new ArrayList<>();
+
+		for (int i = 0; i < inputNums.length; i++) {
+			nums.add(new Num(inputNums[i], i));
+		}
+		int idx = 0;
+		Stack<Num> stack = new Stack<>();
+
+		stack.push(nums.get(0));
+
+		while (stack.size() != 0 && idx < inputNums.length) {
+			while (!stack.isEmpty() && stack.peek().val < inputNums[idx]) {
+				Num poppedNum = stack.pop();
+				ansArr[poppedNum.idx] = inputNums[idx];
 			}
-			stack.push(i);
+			stack.push(new Num(inputNums[idx], idx));
+			idx++;
 		}
-		while (!stack.isEmpty()) {
-			result[stack.pop()] = -1;
+
+		for (Num num : stack) {
+			ansArr[num.idx] = -1;
 		}
-		for (int num : result) bw.write(num + " ");
+
+		for (int num : ansArr) {
+			bw.write(num + " ");
+		}
 		bw.flush();
 		bw.close();
+	}
+
+	static class Num {
+		int val;
+		int idx;
+
+		public Num(int val, int idx) {
+			this.val = val;
+			this.idx = idx;
+		}
 	}
 }
