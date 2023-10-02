@@ -1,66 +1,75 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BOJ2178 {
 
-	static final int WALL = 0;
-
-	static int[][] maze;
+	static char[][] maze;
 	static boolean[][] visited;
-	static int[] dx = {-1, 1, 0, 0};
-	static int[] dy = {0, 0, -1, 1};
+	static int[] moveX = {-1, 1, 0, 0};
+	static int[] moveY = {0, 0, -1, 1};
 	static int N, M;
+	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int[] inputNM = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-
 		N = inputNM[0];
 		M = inputNM[1];
 
-		maze = new int[N][M];
+		maze = new char[N][M];
 		visited = new boolean[N][M];
 
 		for (int i = 0; i < N; i++) {
-			char[] oneMazeLine = br.readLine().toCharArray();
-			for (int j = 0; j < M; j++) {
-				maze[i][j] = oneMazeLine[j] - '0';
-			}
+			char[] inputLine = br.readLine().toCharArray();
+			maze[i] = Arrays.copyOf(inputLine, inputLine.length);
 		}
 
-//		for (int i = 0; i < N; i++) {
-//			System.out.println(Arrays.toString(maze[i]));
-//		}
-
+//		System.out.println(Arrays.deepToString(maze));
 		bfs();
-		bw.write(maze[N - 1][M - 1] + "\n");
-		bw.flush();
-		bw.close();
 	}
 
-	private static void bfs() {
-		Queue<int[]> queue = new LinkedList<>();
-		queue.add(new int[]{0, 0});
-
+	static void bfs() throws IOException {
+		Queue<OneMaze> queue = new LinkedList<>();
+		queue.add(new OneMaze(0, 0, 1));
+		visited[0][0] = true;
+		int flag = 0;
 		while (!queue.isEmpty()) {
-			int[] polledNums = queue.poll();
-			int polledX = polledNums[0];
-			int polledY = polledNums[1];
+			OneMaze polledOneMaze = queue.poll();
 
 			for (int i = 0; i < 4; i++) {
-				int newX = polledX + dx[i];
-				int newY = polledY + dy[i];
-
-				if (0 <= newX && newX < N && 0 <= newY && newY < M) {
-					if (!visited[newX][newY] && maze[newX][newY] != WALL) {
-						queue.add(new int[]{newX, newY});
-						maze[newX][newY] = maze[polledX][polledY] + 1;
-						visited[newX][newY] = true;
+				int mX = polledOneMaze.x + moveX[i];
+				int mY = polledOneMaze.y + moveY[i];
+				int curCount = polledOneMaze.count;
+				if (0 <= mX && mX < N && 0 <= mY && mY < M && !visited[mX][mY] && maze[mX][mY] == '1') {
+					if (mX == N - 1 && mY == M - 1) {
+						bw.write(curCount + 1 + "\n");
+						bw.flush();
+						bw.close();
+						flag = 1;
+						break;
 					}
+					queue.add(new OneMaze(mX, mY, curCount + 1));
+					visited[mX][mY] = true;
 				}
+				if (flag == 1) break;
 			}
 		}
 	}
+
+	static class OneMaze {
+		int x;
+		int y;
+		int count;
+
+		public OneMaze(int x, int y, int count) {
+			this.x = x;
+			this.y = y;
+			this.count = count;
+		}
+	}
+
 }

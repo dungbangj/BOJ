@@ -3,79 +3,75 @@ import java.util.*;
 
 public class BOJ1260 {
 
-	static int N, M, V;
-	static ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
-	static StringBuilder sb = new StringBuilder();
+	static ArrayList<ArrayList<Integer>> arrayList = new ArrayList<>();
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static boolean[] visited;
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
 		int[] inputNMV = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-
-		N = inputNMV[0];
-		M = inputNMV[1];
-		V = inputNMV[2];
+		int N = inputNMV[0];
+		int M = inputNMV[1];
+		int V = inputNMV[2];
 
 		for (int i = 0; i <= N; i++) {
-			arr.add(new ArrayList<>());
+			arrayList.add(new ArrayList<>());
 		}
 
 		for (int i = 0; i < M; i++) {
 			int[] inputAB = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-
 			int A = inputAB[0];
 			int B = inputAB[1];
 
-			arr.get(A).add(B);
-			arr.get(B).add(A);
+			arrayList.get(A).add(B);
+			arrayList.get(B).add(A);
 		}
 
-		for (int i = 1; i <= N; i++) {
-			Collections.sort(arr.get(i));
+		for (int i = 0; i <= N; i++) {
+			arrayList.get(i).sort(Comparator.naturalOrder());
 		}
 
-		visited = new boolean[N + 1];
-		dfs(V, 1);
-		sb.append("\n");
+//		System.out.println(arrayList);
 
 		visited = new boolean[N + 1];
-		bfs(V);
+		DFS(V);
+		bw.newLine();
 
-		bw.write(sb.toString());
+		visited = new boolean[N + 1];
+		BFS(V);
 		bw.flush();
 		bw.close();
 	}
 
-	private static void dfs(int start, int depth) {
-		sb.append(start).append(" ");
-		visited[start] = true;
+	static void DFS(int V) throws IOException {
+		if (visited[V]) {
+			return;
+		}
 
-		ArrayList<Integer> oneArr = arr.get(start);
+		visited[V] = true;
+		bw.write(V + " ");
 
-		for (int neighbour : oneArr) {
-			if (!visited[neighbour]) {
-				dfs(neighbour, depth + 1);
-			}
+		for (int i = 0; i < arrayList.get(V).size(); i++) {
+			DFS(arrayList.get(V).get(i));
 		}
 	}
 
-	private static void bfs(int start) {
+	static void BFS(int V) throws IOException {
 		Queue<Integer> queue = new LinkedList<>();
-		queue.add(start);
-		visited[start] = true;
-		sb.append(start).append(" ");
+		queue.add(V);
+		visited[V] = true;
+		bw.write(V + " ");
 
 		while (!queue.isEmpty()) {
-			int polledNum = queue.poll();
-			ArrayList<Integer> oneArr = arr.get(polledNum);
+			int poppedNum = queue.poll();
 
-			for (int neighbour : oneArr) {
-				if (!visited[neighbour]) {
-					queue.add(neighbour);
-					visited[neighbour] = true;
-					sb.append(neighbour).append(" ");
+			ArrayList<Integer> arrBFS = arrayList.get(poppedNum);
+
+			for (int num : arrBFS) {
+				if (!visited[num]) {
+					queue.add(num);
+					bw.write(num + " ");
+					visited[num] = true;
 				}
 			}
 		}
