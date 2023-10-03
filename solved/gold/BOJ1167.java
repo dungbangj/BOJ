@@ -1,74 +1,65 @@
-import java.awt.*;
 import java.io.*;
-import java.util.*;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BOJ1167 {
-
-	static final int START_NODE = 1;
-
-	static List<Point>[] lists;
-	static boolean visit[];
-	static int max;
+	static ArrayList<Node>[] graph;
+	static int maxNode;
+	static int maxDistance;
+	static boolean[] visited;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int V = Integer.parseInt(br.readLine());
-		lists = new List[V + 1];
-		visit = new boolean[V + 1];
+		graph = new ArrayList[V + 1];
 
-		for (int i = 0; i < V + 1; i++) {
-			lists[i] = new ArrayList<>();
+		for (int i = 0; i <= V; i++) {
+			graph[i] = new ArrayList<>();
 		}
 
-		for (int i = 1; i < V + 1; i++) {
-			int[] nodes = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			int index = 0;
-			int nodeNum = nodes[index++];
+		for (int i = 1; i <= V; i++) {
+			int[] inputNum = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			int idx = 0;
+			int node = inputNum[idx++];
 
-			while (true) {
-				int linkedNodeNum = nodes[index++];
-				if (linkedNodeNum == -1) {
-					break;
-				}
-				int distance = nodes[index++];
-				lists[nodeNum].add(new Point(linkedNodeNum, distance));
-			}
+			do {
+				graph[node].add(new Node(inputNum[idx], inputNum[idx + 1]));
+				idx += 2;
+			} while (idx < inputNum.length && inputNum[idx] != -1);
 		}
 
-//		System.out.println(Arrays.toString(lists));
-		visit[START_NODE] = true;
-		dfs(START_NODE);
-		bw.write(max + "\n");
+		visited = new boolean[V + 1];
+		dfs(1, 0);
+		visited = new boolean[V + 1];
+		dfs(maxNode, 0);
+//		System.out.println(Arrays.toString(graph));
+		bw.write(maxDistance + "\n");
 		bw.flush();
 		bw.close();
 	}
 
-	private static int dfs(int nodeNum) {
-		int farthestDistance = 0;
-		int secondFarthestDistance = 0;
-
-		for (Point point : lists[nodeNum]) {
-			int linkedNodeNum = point.x;
-			int distanceToNode = point.y;
-
-			if (visit[linkedNodeNum]) {
-				continue;
-			}
-			visit[linkedNodeNum] = true;
-
-			int movedDistance = dfs(linkedNodeNum) + distanceToNode;
-
-			if (farthestDistance < movedDistance) {
-				secondFarthestDistance = farthestDistance;
-				farthestDistance = movedDistance;
-			} else if (secondFarthestDistance < movedDistance) {
-				secondFarthestDistance = movedDistance;
-			}
+	static void dfs(int start, int distance) {
+		if (distance > maxDistance) {
+			maxDistance = distance;
+			maxNode = start;
 		}
-		max = Math.max(max, farthestDistance + secondFarthestDistance);
-		return farthestDistance;
+
+		visited[start] = true;
+
+		for (Node node : graph[start]) {
+			if (!visited[node.num]) dfs(node.num, distance + node.distance);
+		}
+	}
+
+	static class Node {
+		int num;
+		int distance;
+
+		public Node(int num, int distance) {
+			this.num = num;
+			this.distance = distance;
+		}
 	}
 }

@@ -1,10 +1,9 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BOJ13023 {
-
-	static int N, M;
-	static ArrayList<ArrayList<Integer>> conns;
+	static ArrayList<Integer>[] graph;
 	static boolean[] visited;
 	static int result;
 
@@ -13,53 +12,47 @@ public class BOJ13023 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int[] inputNM = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		N = inputNM[0];
-		M = inputNM[1];
+		int N = inputNM[0];
+		int M = inputNM[1];
+		visited = new boolean[N];
+		graph = new ArrayList[N];
 
-		conns = new ArrayList<>();
 		for (int i = 0; i < N; i++) {
-			conns.add(new ArrayList<>());
+			graph[i] = new ArrayList<>();
 		}
-		result = 0;
+
 		for (int i = 0; i < M; i++) {
 			int[] inputAB = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			int A = inputAB[0];
-			int B = inputAB[1];
+			int a = inputAB[0];
+			int b = inputAB[1];
 
-			conns.get(A).add(B);
-			conns.get(B).add(A);
+			graph[a].add(b);
+			graph[b].add(a);
 		}
 
-//		System.out.println(conns);
-		visited = new boolean[N];
-
+		result = 0;
 		for (int i = 0; i < N; i++) {
-			if (result == 0) {
-				dfs(i, 1);
-			}
+			dfs(i, 4);
+			if (result == 1) break;
 		}
 		bw.write(result + "\n");
 		bw.flush();
 		bw.close();
 	}
 
-	private static void dfs(int num, int depth) {
-		if (depth == 5) {
+	static void dfs(int num, int depth) {
+		if (depth == 0) {
 			result = 1;
 			return;
 		}
 
 		visited[num] = true;
-		ArrayList<Integer> oneConn = conns.get(num);
 
-		for (int neighbor : oneConn) {
-			if (!visited[neighbor]) {
-//				System.out.println(neighbor);
-//				System.out.println(Arrays.toString(visited));
-				dfs(neighbor, depth + 1);
-//				break;
-			}
+		for (int one : graph[num]) {
+//			System.out.println(one);
+			if (!visited[one]) dfs(one, depth - 1);
 		}
 		visited[num] = false;
+//		System.out.println(false);
 	}
 }

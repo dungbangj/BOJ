@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 public class BOJ1300 {
 
@@ -10,28 +9,27 @@ public class BOJ1300 {
 		int N = Integer.parseInt(br.readLine());
 		int K = Integer.parseInt(br.readLine());
 
-		long lo = 1;
-		long hi = K;
+		long low = 1;
+		long high = K;
 
-		while (lo < hi) {
-			long mid = (lo + hi) / 2;
+		while (low < high) {
+			long mid = (low + high) / 2;
 			long count = 0;
-//			System.out.println("mid = " + mid);
+
 			for (int i = 1; i <= N; i++) {
 				count += Math.min(mid / i, N);
 //				System.out.println("count = " + count);
 			}
-			if (K <= count) {
-				hi = mid;
-//				System.out.println("hi = " + hi);
-			} else {
-				lo = mid + 1;
-//				System.out.println("lo = " + lo);
-			}
-//			System.out.println();
+
+			if (K <= count) high = mid;
+			else low = mid + 1;
+
+//			System.out.println("low = " + low);
+//			System.out.println("high = " + high);
+//			System.out.println("count = " + count);
 		}
 
-		bw.write(lo + "\n");
+		bw.write(low + "\n");
 		bw.flush();
 		bw.close();
 	}
