@@ -1,34 +1,47 @@
-import javax.swing.*;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class BOJ11047 {
-
-	static int N, K, count;
-	static int[] currency;
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int[] inputNK = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		N = inputNK[0];
-		K = inputNK[1];
-		int totalMoney = K;
+		int N = inputNK[0];
+		int K = inputNK[1];
+		int[] currency = new int[N];
+		PriorityQueue<Integer> queue = new PriorityQueue<>();
 
-		currency = new int[N];
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < currency.length; i++) {
 			currency[i] = Integer.parseInt(br.readLine());
 		}
 
-		for (int i = N - 1; i >= 0; i--) {
-			if (currency[i] <= totalMoney) {
-				int tmpCount = totalMoney / currency[i];
-				totalMoney -= tmpCount * currency[i];
-				count += tmpCount;
+//		System.out.println("currency = " + Arrays.toString(currency));
+
+		int count = 0;
+
+		for (int j = 0; j < N; j++) {
+			int tmpMoney = K;
+			count = 0;
+			for (int i = N - j - 1; i >= 0; i--) {
+				count += tmpMoney / currency[i];
+//				System.out.println("count = " + count);
+//				System.out.println("tmpMoney = " + tmpMoney);
+//				System.out.println("currency = " + currency[i]);
+//				System.out.println("=====" + tmpMoney % currency[i]);
+
+				if (tmpMoney >= currency[i]) tmpMoney %= currency[i];
 			}
+//			System.out.println(tmpMoney);
+
+			if (tmpMoney == 0) queue.add(count);
 		}
-		bw.write(count + "\n");
+
+//		System.out.println(counts);
+		bw.write(queue.poll() + "\n");
 		bw.flush();
 		bw.close();
 	}

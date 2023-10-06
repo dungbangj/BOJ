@@ -8,57 +8,52 @@ public class BOJ1931 {
 
 		int N = Integer.parseInt(br.readLine());
 
-		PriorityQueue<Meeting> meetings = new PriorityQueue<>();
+		Comparator<SE> comparator = new Comparator<SE>() {
+			@Override
+			public int compare(SE s1, SE s2) {
+				return s1.end != s2.end ? s1.end - s2.end : s1.start - s2.start;
+			}
+		};
+
+		ArrayList<SE> meetings = new ArrayList<>();
 
 		for (int i = 0; i < N; i++) {
-			int[] inputTimes = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-
-			int startTime = inputTimes[0];
-			int endTime = inputTimes[1];
-
-			meetings.add(new Meeting(startTime, endTime));
+			int[] inputSE = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			meetings.add(new SE(inputSE[0], inputSE[1]));
 		}
+		meetings.sort(comparator);
 
-//		System.out.println("meetings = " + meetings);
+//		System.out.println(meetings);
 
 		int count = 0;
-		Meeting meeting = new Meeting(0, 0);
+		SE meeting = new SE(0, 0);
 
-		while (!meetings.isEmpty()) {
-			Meeting currentMeeting = meetings.poll();
-			if (meeting.endTime <= currentMeeting.startTime) {
-				meeting = currentMeeting;
+		for (SE curMeeting : meetings) {
+//			System.out.println(curMeeting.end + ", " + meeting.start);
+			if (curMeeting.start >= meeting.end) {
+				meeting = curMeeting;
 				count++;
-//				System.out.println("currentMeeting = " + currentMeeting);
 			}
+//			System.out.println(meeting);
+//			System.out.println(curMeeting);
 		}
-
-		bw.write(count+ "\n");
+		bw.write(count + "\n");
 		bw.flush();
 		bw.close();
 	}
 
-	static class Meeting implements Comparable<Meeting>{
-		int startTime;
-		int endTime;
+	static class SE {
+		int start;
+		int end;
 
-		public Meeting(int startTime, int endTime) {
-			this.startTime = startTime;
-			this.endTime = endTime;
-		}
-
-		@Override
-		public int compareTo(Meeting anotherMeeting) {
-			int result = Integer.compare(this.endTime, anotherMeeting.endTime);
-			if (result == 0) {
-				return Integer.compare(this.startTime, anotherMeeting.startTime);
-			}
-			return result;
+		public SE(int start, int end) {
+			this.start = start;
+			this.end = end;
 		}
 
 		@Override
 		public String toString() {
-			return "{startTime=" + startTime + ", endTime=" + endTime + "}\n";
+			return "start = " + start + ", end = " + end + "\n";
 		}
 	}
 }
