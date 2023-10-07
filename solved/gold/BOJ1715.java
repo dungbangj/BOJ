@@ -8,20 +8,21 @@ public class BOJ1715 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int N = Integer.parseInt(br.readLine());
-		PriorityQueue<Long> priorityQueue = new PriorityQueue<>();
+		PriorityQueue<Long> queue = new PriorityQueue<>();
 
 		for (int i = 0; i < N; i++) {
-			priorityQueue.add(Long.parseLong(br.readLine()));
+			queue.add(Long.parseLong(br.readLine()));
 		}
 
 		long sum = 0;
-		while (priorityQueue.size() > 1) {
-			long polledNum1 = priorityQueue.poll();
-			long polledNum2 = priorityQueue.poll();
+		while (queue.size() > 1) {
+			long polledNum1 = queue.poll();
+			long polledNum2 = queue.poll();
 
 			sum += polledNum1 + polledNum2;
-			priorityQueue.add(polledNum1 + polledNum2);
-
+			queue.add(polledNum1 + polledNum2);
+//			System.out.println("sum = " + sum);
+//			System.out.println("queue = " + queue);
 		}
 
 		bw.write(sum + "\n");
