@@ -1,38 +1,38 @@
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
 public class BOJ1929 {
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int[] inputMN = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-
 		int M = inputMN[0];
 		int N = inputMN[1];
 
+		boolean[] eratosArr = new boolean[N + 1];
+
+		makeEratos(eratosArr);
+
 		for (int i = M; i <= N; i++) {
-			if (isPrime(i)) {
-				bw.write(i + "\n");
-			}
+			if (eratosArr[i]) bw.write(i + "\n");
 		}
+
 		bw.flush();
 		bw.close();
 	}
 
-	private static boolean isPrime(int num) {
-		if (num == 2 || num == 3) {
-			return true;
-		} else if (num <= 1 || num % 2 == 0 || num % 3 == 0) {
-			return false;
-		}
+	static void makeEratos(boolean[] eratosArr) {
+		Arrays.fill(eratosArr, true);
+		eratosArr[0] = eratosArr[1] = false;
+		int max = eratosArr.length - 1;
 
-		for (int i = 5; i * i <= num; i += 6) {
-			if (num % i == 0 || num % (i + 2) == 0) {
-				return false;
+		for (int i = 2; i * i <= max; i++) {
+			if (eratosArr[i]) {
+				for (int j = i * i; j <= max; j += i) {
+					eratosArr[j] = false;
+				}
 			}
 		}
-		return true;
 	}
 }

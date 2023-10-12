@@ -1,40 +1,48 @@
+import com.sun.source.tree.NewArrayTree;
+
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
 public class BOJ1747 {
+
+	static final int MAX = 1003001;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		int inputMin = Integer.parseInt(br.readLine());
-		int max = 1003002;
+		int N = Integer.parseInt(br.readLine());
+		boolean[] eratosArr = new boolean[MAX + 1];
 
-		boolean[] isPrime = new boolean[max];
-		Arrays.fill(isPrime, true);
-		isPrime[0] = isPrime[1] = false;
+		makeEratos(eratosArr);
 
-		for (int i = 2; i < max; i++) {
-			for (int j = 2; i * j < max; j++) {
-				isPrime[i * j] = false;
-			}
-		}
-		Queue<Integer> primes = new LinkedList<>();
-
-		for (int i = inputMin; i < isPrime.length; i++) {
-			if (isPrime[i]) {
-				primes.add(i);
-			}
-		}
-
-		while (!primes.isEmpty()) {
-			String polledPrime = String.valueOf(primes.poll());
-			String reverPrime = new StringBuilder(polledPrime).reverse().toString();
-			if (polledPrime.equals(reverPrime)) {
-				bw.write(polledPrime + "\n");
+		for (int i = N; i <= MAX; i++) {
+			if (eratosArr[i] && isPalindrome(i)) {
+				bw.write(i + "\n");
 				break;
 			}
 		}
 		bw.flush();
 		bw.close();
+	}
+
+	static void makeEratos(boolean[] eratosArr) {
+		Arrays.fill(eratosArr, true);
+		eratosArr[0] = eratosArr[1] = false;
+		int max = eratosArr.length - 1;
+
+		for (int i = 2; i * i <= max; i++) {
+			if (eratosArr[i]) {
+				for (int j = i * i; j <= max; j += i) {
+					eratosArr[j] = false;
+				}
+			}
+		}
+	}
+
+	static boolean isPalindrome(int num) {
+		String strNum = String.valueOf(num);
+		String reverNum = new StringBuilder(strNum).reverse().toString();
+
+		return strNum.equals(reverNum);
 	}
 }

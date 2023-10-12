@@ -1,6 +1,5 @@
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Arrays;
 
 public class BOJ1850 {
 	public static void main(String[] args) throws IOException {
@@ -11,19 +10,17 @@ public class BOJ1850 {
 		long A = inputAB[0];
 		long B = inputAB[1];
 
-		long gcdNum = gcd(Math.max(A, B), Math.min(A, B));
-		for (int i = 0; i < gcdNum; i++) {
+		long result = eucli(A, B);
+
+		for (int i = 0; i < result; i++) {
 			bw.write("1");
 		}
-		bw.newLine();
 		bw.flush();
 		bw.close();
 	}
 
-	public static long gcd(long a, long b) {
-		if (b == 0) {
-			return a;
-		}
-		return gcd(b, a % b);
+	static long eucli(long big, long small) {
+		long mod = big % small;
+		return mod != 0 ? eucli(small, mod) : small;
 	}
 }
