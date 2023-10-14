@@ -6,29 +6,24 @@ public class BOJ1934 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		int N = Integer.parseInt(br.readLine());
-
-		for (int i = 0; i < N; i++) {
+		int T = Integer.parseInt(br.readLine());
+		for (int i = 0; i < T; i++) {
 			int[] inputAB = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-
 			int A = inputAB[0];
 			int B = inputAB[1];
-
-			bw.write(lcm(A, B) + "\n");
+			int small = Math.min(A, B);
+			int big = Math.max(A, B);
+			bw.write(lcm(big, small) + "\n");
 		}
 		bw.flush();
 		bw.close();
 	}
 
-	private static int gcd(int a, int b) {
-		if (b == 0) {
-			return a;
-		}
-
-		return gcd(b, a % b);
+	static int lcm(int A, int B) {
+		return A * B / gcd(A, B);
 	}
 
-	private static int lcm(int a, int b) {
-		return (a * b) / gcd(a, b);
+	static int gcd(int A, int B) {
+		return A % B == 0 ? B : gcd(B, A % B);
 	}
 }
